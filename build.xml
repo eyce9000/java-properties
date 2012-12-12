@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" name="Property Mapper Library">
+	<path id="PropertyMapper.classpath">
+		<pathelement location="bin" />
+	</path>
+	<target name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="PropertyMapper.classpath" />
+		</javac>
+		<mkdir dir="build" />
+		<jar destfile="build/property-mapper.jar" basedir="bin" includes="**/*.class,**/*.xml,**/*.srq,**/*.sql">
+		</jar>
+	</target>
+</project>
