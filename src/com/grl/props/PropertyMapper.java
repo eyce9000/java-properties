@@ -13,11 +13,14 @@ public class PropertyMapper {
 		Field[] fields = type.getDeclaredFields();
 		for(Field field :fields){
 			Property annotation = field.getAnnotation(Property.class);
-			description += "Property "+annotation.name();
+			description += annotation.name();
 			if(annotation.required())
-				description += " is required";
+				description += " *";
+			if(!annotation.description().isEmpty())
+				description += "\n\t"+annotation.description();
 			description +="\n";
 		}
+		description += "\n* required Property";
 		return description;
 	}
 	
