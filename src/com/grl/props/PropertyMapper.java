@@ -25,10 +25,17 @@ public class PropertyMapper {
 	}
 	
 	public <T> T loadPropertyFile(File file, Class<T> type) throws FileNotFoundException, IOException, InstantiationException, IllegalAccessException{
+		T object = type.newInstance();
+		loadPropertyFileIntoInstance(file,object,type);
+		return object;
+	}
+	
+	public <T> void loadPropertyFileIntoInstance(File file, T object, Class<T> type) throws FileNotFoundException, IOException{
+
 		Properties props = new Properties();
 		props.load(new FileReader(file));
 		
-		T object = type.newInstance();
+		
 		Field[] fields = object.getClass().getDeclaredFields();
 		
 		for(Field field :fields){
@@ -56,7 +63,6 @@ public class PropertyMapper {
 			}
 			field.setAccessible(wasPublic);
 		}
-		return object;
 	}
 	private String load(Properties props, String key){
 		return props.getProperty(key);
