@@ -3,8 +3,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-project.version = "3.0.1"
-group='com.github.eyce9000.propertymapper'
+project.version = "3.0.2"
+group='com.github.eyce9000'
 
 publishing {
 	publications {
@@ -29,13 +29,6 @@ eclipse{
 repositories {
 	mavenCentral()
 	mavenLocal()
-	ivy{
-		url "${sharedLibrariesDir}/ivyshared"
-		layout "pattern",{
-			ivy "[organisation]/[module]/[revision]/ivys/ivy.xml"
-			artifact "[organisation]/[module]/[revision]/[type]s/[artifact]-[revision].[ext]"
-		}
-	}
 	maven {
 		// change to point to your repo, e.g. http://my.org/repo
 		url "${sharedLibrariesDir}/m2"

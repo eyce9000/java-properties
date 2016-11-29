@@ -3,3 +3,8 @@ bin
 build
 *.properties
 gradle.properties
+test-files
+.jazzignore
+.gradle .gradletasknamecache
+.gradle/
+.gradletasknamecache
